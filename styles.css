@@ -51,20 +51,28 @@ h6 {
 
 
 :root {
-    --left-right-split: 50%;
+    --min-left-right-split: 50%;
+    --page-top-bottom-margin: 10%;
+    --left-margin: 50px;
+    --right-margin: 150px;
+    --section-top-bottom-margin:20px;
+    --input-box-width: 260px;
+    --form-section-top-bottom-margin: 15px;
+    --account-section-top-bottom-margin: var(--form-section-top-bottom-margin);
+    --theme-bg-color: #e2a76d;
+    --button-color:#e2872c;
+    --theme-bg-color-contrast:#e7dbce;
   }
 
 body {
-    background-color: rgb(0, 26, 255);
+    background-color: rgb(0, 255, 132);
     display: flex;
 
 }
 
-
 .leftside {
-    background-color: #e2872c;
     display: inline;
-    width: var(--left-right-split);
+    width: var(--min-left-right-split);
     max-width:500px;
     height: 100vh;
     overflow: hidden;
@@ -72,6 +80,17 @@ body {
     background-image: url('halie-west-FuP-d0PIA5A-unsplash.jpg');
     background-size: cover;
     background-position: -50px;
+    
+}
+
+.photo-ref{
+    position:relative;
+    
+    color:rgb(0, 0, 0);
+    bottom:-85vh;
+    right:-25%;
+    opacity: .8;
+    width:fit-content;
 }
 
 .logoDisplay{
@@ -79,14 +98,102 @@ body {
     opacity:0.5;
     width:100%;
     position:relative;
-    top:30%;
+    top:25%;
+    display:flex;
+    align-items:center;
 }
 
+.logo{
+    display:inline;
+    margin-left:30%;
+    min-width: 100px;
+}
+
+.logoName{
+    display:inline;
+    color:white;
+    font-size:40px;
+}
 
 .rightside {
-    background-color: rgb(140, 159, 104);
+
     display: inline;
     flex:1 0 auto;
     height:100vh;
+    width:calc(100% - var(--min-left-right-split))
+
+}
+
+.descriptionSection{
+    background-color:var(--theme-bg-color);
+    height:30%;
+    margin:0;
+    padding-bottom:50px;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+}
+
+.descriptionText{
+    margin-left:var(--left-margin);
+    margin-right:var(--right-margin);
+    color:#000000;
+    font-size: 20px;
+    font-weight: 700;
+    width: 519px;
+}
+
+.descriptionText:last-child{
+    margin-top:var(--form-section-top-bottom-margin);
+}
+
+.formSection{
+    background-color: var(--theme-bg-color-contrast);
+    height:30%;
+}
+
+.formSection .descriptionText{
+    padding-top:var(--form-section-top-bottom-margin);
+}
+
+.inputRow{
+    display:flex;
+ 
+
+}
+.inputRow .inputItem{
+    width: var(--input-box-width);
+    margin-right:calc(var(--left-margin) + 10px);
+    margin-left:var(--left-margin);
+    margin-top:15px;
+}
+
+.inputRow:last-child{
+    margin-bottom:20px;
+}
+
+input[type="text"],input[type="email"]{
+   width: calc(var(--input-box-width) - 2px)
+}
+
+.createAccountSection{
+    background-color:var(--theme-bg-color);
+    height:40%;
+}
+
+.createAccountButton{
+    background-color: var(--button-color);
+    color:black;
+    width: calc(var(--input-box-width) * 0.9);
+    padding: 10px;
+    border-radius: 25px;
+    margin-top:var(--account-section-top-bottom-margin) ;
+    margin-left:var(--left-margin);
+}
+
+.login-text{
+    margin-top:var(--account-section-top-bottom-margin);
+    margin-left:var(--left-margin);
 
 }
