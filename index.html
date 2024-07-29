@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
-    <script src=scripts.js></script>
+
 
 </head>
 
@@ -34,14 +34,16 @@
             <div class="logoName">
                 Gersh
             </div>
-            
+
         </div>
         <!-- The Background Image
          stuff: With Gersh, your
                 greatest potential can finally be fulfilled.
           Things to Do: 
           1. Choose a font for the logo name-->
-          <p class="photo-ref">Photo by Halie West on <a href="https://unsplash.com/photos/brown-rock-formation-during-daytime-FuP-d0PIA5A?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></p>
+        <p class="photo-ref">Photo by Halie West on <a
+                href="https://unsplash.com/photos/brown-rock-formation-during-daytime-FuP-d0PIA5A?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+        </p>
     </section>
 
     <section class="rightside">
@@ -51,57 +53,59 @@
             </p>
             <p class="descriptionText">Be <em>awesome</em> with Gersh.</p>
         </section>
+
+
         <section class="formSection">
             <div class="descriptionText">
                 Gersh with us!
             </div>
-            <div class="inputRow">
-                <div class="inputItem">
-                    <label for="first-name">First Name</label>
-                    <input type="text" 
-                    id="first-name" 
-                    name="firstName" 
-                    placeholder="Joe (max 20 char)"
-                    maxlength="20"
-                    pattern="^(?=.*[a-zA-Z])[a-zA-Z0-9]{1,20}">
+            <form id="myform"  novalidate>
+                <div class="inputRow">
+                    <div class="inputItem">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" name="firstName" required placeholder="Joe (max 20 char)">
+                        <span class="error" aria-live="polite"></span>
+                    </div>
+                    <div class="inputItem">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" name="lastName"required placeholder="Shmo (max 20 char)">
+                        <span class="error" aria-live="polite"></span>
+                    </div>
+                    
                 </div>
-                <div class="inputItem">
-                    <label for="last-name">Last Name</label>
-                    <input type="text" 
-                    id="last-name" 
-                    name="lastName" 
-                    placeholder="Shmo (max 20 char)"
-                    maxlength="20"
-                    pattern="^(?=.*[a-zA-Z])[a-zA-Z0-9]{1,20}">
+                <div class="inputRow">
+                    <div class="inputItem">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="emailName" minlength="5" required placeholder="hersh@thegersh.com">
+                        <span class="error" aria-live="polite"></span>
+                    </div>
+                    <div class="inputItem">
+                        <label for="phone-number">Phone Number</label>
+                        <input type="text" id="phone-number" name="phoneNumber]" required placeholder="838-443-4391">
+                        <span class="error" aria-live="polite"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="inputRow">
-                <div class="inputItem">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="emailName" placeholder="hersh@thegersh.com">
+                <div class="inputRow">
+                    <div class="inputItem">
+                        <label for="password">Password</label>
+                        <input type="text" id="password" name="passwordName" required
+                            placeholder="Password (8-20 char, at least 1 caps, 1 number)">
+                            <span class="error" aria-live="polite"></span>
+                    </div>
+                    <div class="inputItem">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="text" id="confirm-password" name="confirmPasswordName" required placeholder="">
+                        <span class="error" aria-live="polite"></span>
+                    </div>
                 </div>
-                <div class="inputItem">
-                    <label for="phone-number">Phone Number</label>
-                    <input type="text" id="phone-number" name="phoneNumber]" placeholder="838-443-4391">
-                </div>
-            </div>
-            <div class="inputRow">
-                <div class="inputItem">
-                    <label for="password">Password</label>
-                    <input type="text" id="password" name="passwordName" placeholder="Password (8-20 char, at least 1 caps, 1 number)">
-                </div>                <div class="inputItem">
-                    <label for="confirm-password">Confirm Password</label>
-                    <input type="text" id="confirm-password" name="confirmPasswordName"
-                        placeholder="">
-                </div>
-            </div>
+            </form>
         </section>
         <section class="createAccountSection">
-            <button class="createAccountButton" type="button">Create Gersh Account</button>
+            <button class="submit" form="myform" type="submit">Create Gersh Account</button>
             <p class="login-text">Already have an account? <a href="">Log in</a></p>
         </section>
     </section>
-
+    <script src=scripts.js></script>
 </body>
 
 </html>

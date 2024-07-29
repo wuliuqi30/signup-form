@@ -51,12 +51,13 @@ h6 {
 
 
 :root {
-    --min-left-right-split: 50%;
+    --min-left-right-split: 30%;
     --page-top-bottom-margin: 10%;
     --left-margin: 50px;
     --right-margin: 150px;
     --section-top-bottom-margin:20px;
     --input-box-width: 260px;
+    --input-box-height: 2rem;
     --form-section-top-bottom-margin: 15px;
     --account-section-top-bottom-margin: var(--form-section-top-bottom-margin);
     --theme-bg-color: #e2a76d;
@@ -73,8 +74,8 @@ body {
 
 .leftside {
     display: inline;
+    min-width:300px;
     width: var(--min-left-right-split);
-    max-width:500px;
     height: 100vh;
     overflow: hidden;
     /* Image is 1862 width by 2792 height*/
@@ -86,7 +87,6 @@ body {
 
 .photo-ref{
     position:relative;
-    
     color:rgb(0, 0, 0);
     bottom:-85vh;
     right:-25%;
@@ -102,11 +102,11 @@ body {
     top:25%;
     display:flex;
     align-items:center;
+    justify-content: center;
 }
 
 .logo{
     display:inline;
-    margin-left:30%;
     min-width: 100px;
 }
 
@@ -121,8 +121,10 @@ body {
     display: inline;
     flex:1 0 auto;
     height:100vh;
-    width:calc(100% - var(--min-left-right-split))
-
+    /* width:calc(100% - var(--min-left-right-split)); */
+    
+    width: calc(100% - var(--min-left-right-split));
+    min-width:700px;
 }
 
 .descriptionSection{
@@ -151,7 +153,8 @@ body {
 
 .formSection{
     background-color: var(--theme-bg-color-contrast);
-    height:30%;
+    height:40%;
+
 }
 
 .formSection .descriptionText{
@@ -166,6 +169,13 @@ body {
     margin-right:calc(var(--left-margin) + 10px);
     margin-left:var(--left-margin);
     margin-top:15px;
+    position:relative;
+    height:calc(2.5 *var(--input-box-height));
+
+}
+
+.inputItem input{
+    height:var(--input-box-height);
 }
 
 .inputRow:last-child{
@@ -185,13 +195,42 @@ input:invalid:focus{
 }
 
 
+/* This is the style of our error messages */
+.error {
+    width: 100%;
+    padding: 0;
+  
+    font-size: 80%;
+    color: white;
+    background-color: #900;
+    border-radius: 0 0 5px 5px;
+  
+    box-sizing: border-box;
+
+    position:absolute;
+    top:calc(1.6 * var(--input-box-height));
+    left:0px;
+    width: var(--input-box-width);
+  }
+  
+  .error.active {
+    padding: 0.1em;
+    opacity: 1;
+  }
+
+  .error.inactive {
+    opacity:0;
+  }
+
+
+
 
 .createAccountSection{
     background-color:var(--theme-bg-color);
-    height:40%;
+    height:30%;
 }
 
-.createAccountButton{
+.submit{
     background-color: var(--button-color);
     color:black;
     width: calc(var(--input-box-width) * 0.9);
