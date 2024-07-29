@@ -47,7 +47,7 @@ h6 {
 #__next {
     isolation: isolate;
 }
-
+ 
 
 
 :root {
@@ -67,6 +67,7 @@ h6 {
 body {
     background-color: rgb(0, 255, 132);
     display: flex;
+    width:100vw;
 
 }
 
@@ -159,8 +160,6 @@ body {
 
 .inputRow{
     display:flex;
- 
-
 }
 .inputRow .inputItem{
     width: var(--input-box-width);
@@ -176,6 +175,16 @@ body {
 input[type="text"],input[type="email"]{
    width: calc(var(--input-box-width) - 2px)
 }
+
+input:invalid{
+    border: 2px solid red;
+}
+
+input:invalid:focus{
+    background-image: linear-gradient(pink,lightgreen);
+}
+
+
 
 .createAccountSection{
     background-color:var(--theme-bg-color);

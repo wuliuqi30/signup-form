@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
+    <script src=scripts.js></script>
 
 </head>
 
@@ -57,11 +58,21 @@
             <div class="inputRow">
                 <div class="inputItem">
                     <label for="first-name">First Name</label>
-                    <input type="text" id="first-name" name="firstName" placeholder="Joe (max 20 char)">
+                    <input type="text" 
+                    id="first-name" 
+                    name="firstName" 
+                    placeholder="Joe (max 20 char)"
+                    maxlength="20"
+                    pattern="^(?=.*[a-zA-Z])[a-zA-Z0-9]{1,20}">
                 </div>
                 <div class="inputItem">
                     <label for="last-name">Last Name</label>
-                    <input type="text" id="last-name" name="lastName" placeholder="Shmo (max 20 char)">
+                    <input type="text" 
+                    id="last-name" 
+                    name="lastName" 
+                    placeholder="Shmo (max 20 char)"
+                    maxlength="20"
+                    pattern="^(?=.*[a-zA-Z])[a-zA-Z0-9]{1,20}">
                 </div>
             </div>
             <div class="inputRow">
@@ -78,8 +89,7 @@
                 <div class="inputItem">
                     <label for="password">Password</label>
                     <input type="text" id="password" name="passwordName" placeholder="Password (8-20 char, at least 1 caps, 1 number)">
-                </div>
-                <div class="inputItem">
+                </div>                <div class="inputItem">
                     <label for="confirm-password">Confirm Password</label>
                     <input type="text" id="confirm-password" name="confirmPasswordName"
                         placeholder="">
