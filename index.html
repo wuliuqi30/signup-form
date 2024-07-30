@@ -48,7 +48,7 @@
 
     <section class="rightside">
         <section class="descriptionSection">
-            <p class="descriptionText">WARNING: THIS IS NOT A REAL SERVICE. Look man, Gersh is the
+            <p class="descriptionText">Hello friends. (WARNING: THIS IS NOT A REAL SERVICE). Look man, Gersh is the
                 awesomest platform available right now.
             </p>
             <p class="descriptionText">Be <em>awesome</em> with Gersh.</p>
@@ -82,26 +82,31 @@
                     <div class="inputItem">
                         <label for="phone-number">Phone Number</label>
                         <input type="text" id="phone-number" name="phoneNumber]" required placeholder="838-443-4391">
+                        
                         <span class="error" aria-live="polite"></span>
                     </div>
                 </div>
                 <div class="inputRow">
                     <div class="inputItem">
                         <label for="password">Password</label>
-                        <input type="text" id="password" name="passwordName" required
+                        <input type="password" id="password" name="passwordName" required
                             placeholder="Password (8-20 char, at least 1 caps, 1 number)">
+                            
                             <span class="error" aria-live="polite"></span>
+                            <span><input type="checkbox" id = "checkbox1" onclick="togglePw()">Show Password</span>
                     </div>
                     <div class="inputItem">
                         <label for="confirm-password">Confirm Password</label>
-                        <input type="text" id="confirm-password" name="confirmPasswordName" required placeholder="">
+                        <input type="password" id="confirm-password" name="confirmPasswordName" required placeholder="">
+                        
                         <span class="error" aria-live="polite"></span>
+                        <span><input type="checkbox" id = "checkbox2" onclick="toggleConfirmPw()">Show Confirmation Password</span>
                     </div>
                 </div>
+                <button class="submit" form="myform" type="submit">Create Gersh Account</button>
             </form>
         </section>
         <section class="createAccountSection">
-            <button class="submit" form="myform" type="submit">Create Gersh Account</button>
             <p class="login-text">Already have an account? <a href="">Log in</a></p>
         </section>
     </section>

@@ -10,28 +10,24 @@ const form = document.querySelector("form");
 const firstName = document.getElementById("first-name");
 const firstNameError = document.querySelector("#first-name + span.error");
 
-
-
 // Set Validation Inputs
 let nameMinLength = 1;
 let nameMaxLength = 20;
 
 // Name Pattern Matching: 
 
-let namePattern = `^[a-zA-Z0-9.\\\-]+$`;
+let namePattern = `^(?=.*[a-zA-Z])[a-zA-Z0-9\\\-\'\ ]+$`;
 firstName.setAttribute("pattern", namePattern);
 firstName.setAttribute("minlength", nameMinLength);
 firstName.setAttribute("maxlength", nameMaxLength);
 
 firstName.addEventListener("input", (event) => {
-
+  firstNameError.textContent = '';
   if (firstName.validity.valid) {
-    firstNameError.textContent = "";
-    firstNameError.className = "error inactive";
-  }
-
-  else {
-    showFirstNameError();
+    firstName.classList.add("correct");
+  } else 
+  {
+    firstName.classList.remove("correct");
   }
 });
 
@@ -49,7 +45,11 @@ form.addEventListener("submit", (event) => {
 
 function showFirstNameError() {
 
-  if (firstName.validity.tooShort) {
+  if (firstName.validity.valueMissing) {
+    // If the field is empty,
+    // display the following error message.
+    firstNameError.textContent = "You need to enter a first name.";
+  } else if (firstName.validity.tooShort) {
     firstNameError.textContent = `Please Enter at least ${firstName.minLength} character(s)`;
   } else if (firstName.validity.patternMismatch) {
     firstNameError.textContent = "Please enter with correct pattern";
@@ -59,7 +59,7 @@ function showFirstNameError() {
 }
 
 
-
+// Last Name
 const lastName = document.getElementById("last-name");
 const lastNameError = document.querySelector("#last-name + span.error");
 lastName.setAttribute("pattern", namePattern);
@@ -67,13 +67,11 @@ lastName.setAttribute("minlength", nameMinLength);
 lastName.setAttribute("maxlength", nameMaxLength);
 
 lastName.addEventListener("input", (event) => {
-
+  lastNameError.textContent = '';
    if (lastName.validity.valid) {
-    lastNameError.textContent = "";
-    lastNameError.className = "error inactive";
-
+    lastName.classList.add('correct');
   } else {
-    showLastNameError();
+    lastName.classList.remove('correct');
   }
 });
 
@@ -101,6 +99,8 @@ function showLastNameError() {
 }
 
 
+
+
 // Email Matching:
 const email = document.getElementById("email");
 const emailError = document.querySelector("#email + span.error");
@@ -109,12 +109,11 @@ email.setAttribute("pattern", emailPattern);
 
 
 email.addEventListener("input", (event) => {
-
+  emailError.textContent = '';
   if (email.validity.valid) {
-    emailError.textContent = "";
-
+    email.classList.add('correct');
   } else {
-    showEmailError();
+    email.classList.remove('correct');
   }
 });
 
@@ -127,8 +126,6 @@ form.addEventListener("submit", (event) => {
 });
 
 function showEmailError() {
-
-
   if (email.validity.valueMissing) {
     // If the field is empty,
     // display the following error message.
@@ -142,21 +139,21 @@ function showEmailError() {
   emailError.className = "error active";
 }
 
-// Phone Number Validation
 
+
+// Phone Number Validation
 const phone = document.getElementById("phone-number");
 const phoneError = document.querySelector("#phone-number + span.error");
 phonePattern = `^\\d{3}(\-?\\d{3})(\-?\\d{4})$`
 phone.setAttribute("pattern", phonePattern);
 
 phone.addEventListener("input", (event) => {
-
+  phoneError.textContent = '';
   if (phone.validity.valid) {
-    phoneError.textContent = "";
-
+    phone.classList.add('correct');
   } else {
-    showPhoneError();
-  }
+    phone.classList.remove('correct');
+  }  
 });
 
 form.addEventListener("submit", (event) => {
@@ -168,8 +165,6 @@ form.addEventListener("submit", (event) => {
 });
 
 function showPhoneError() {
-
-
   if (phone.validity.valueMissing) {
     // If the field is empty,
     // display the following error message.
@@ -183,6 +178,8 @@ function showPhoneError() {
   phoneError.className = "error active";
 }
 
+
+
 // Password Validation: 
 const minPwLength = 8;
 const maxPwLength = 25;
@@ -194,17 +191,14 @@ pw.setAttribute("pattern", pwPattern);
 pw.setAttribute("placeholder", pwPlaceholder);
 
 pw.addEventListener("input", (event) => {
-
-  if (pw.validity.valueMissing) {
-    // If the field is empty,
-    // display the following error message.
-    pwError.textContent = "Don't forget to put your phone number!";
-  } else if (pw.validity.valid) {
-    pwError.textContent = null;
-    // pwError.className = "error inactive";
+  pwError.textContent = '';
+  if (pw.validity.valid) {
+    pw.classList.add('correct');
+    
   } else {
-    showPwError();
-  }
+    pw.classList.remove('correct');
+  }  
+
 });
 
 form.addEventListener("submit", (event) => {
@@ -212,7 +206,6 @@ form.addEventListener("submit", (event) => {
     showPwError();
     event.preventDefault();
   }
-
 });
 
 function showPwError() {
@@ -227,19 +220,28 @@ function showPwError() {
   pwError.className = "error active";
 }
 
-// Confirm password:
+function togglePw(){
+  if (pw.type === "password"){
+  pw.type = "text"} 
+  else {
+    pw.type = "password";
+  }
 
+}
+
+
+
+// Confirm password:
 const pwConfirm = document.getElementById("confirm-password");
 const pwConfirmError = document.querySelector("#confirm-password + span.error");
 
 pwConfirm.addEventListener("input", (event) => {
-  console.log(pwConfirm.value);
-  if (pwConfirm.value === pw.value) {
-    pwConfirmError.textContent = "";
-    pwConfirmError.className = "error inactive";
+  pwConfirmError.textContent = '';
+  if (pwConfirm.value === pw.value && pw.validity.valid) {
+    pwConfirm.classList.add('correct');
   } else {
     pwConfirm.validity.valid = false;
-    showPwConfirmError();
+    pwConfirm.classList.remove('correct');
   }
 });
 
@@ -252,7 +254,21 @@ form.addEventListener("submit", (event) => {
 });
 
 function showPwConfirmError() {
+  if (pw.validity.valueMissing) {
+    pwConfirmError.textContent = "You still need to confirm password.";
+  } else if(pwConfirm.value !== pw.value) {
   pwConfirmError.textContent = "Passwords Don't Match";
+  }
   // Set the styling appropriately
   pwConfirmError.className = "error active";
+}
+
+
+function toggleConfirmPw(){
+  if (pwConfirm.type === "password"){
+    pwConfirm.type = "text"} 
+  else {
+    pwConfirm.type = "password";
+  }
+
 }

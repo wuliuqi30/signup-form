@@ -58,11 +58,12 @@ h6 {
     --section-top-bottom-margin:20px;
     --input-box-width: 260px;
     --input-box-height: 2rem;
-    --form-section-top-bottom-margin: 15px;
+    --form-section-top-bottom-margin: 40px;
     --account-section-top-bottom-margin: var(--form-section-top-bottom-margin);
     --theme-bg-color: #e2a76d;
     --button-color:#e2872c;
     --theme-bg-color-contrast:#e7dbce;
+    --description-text-font-size: 20px;
   }
 
 body {
@@ -142,7 +143,7 @@ body {
     margin-left:var(--left-margin);
     margin-right:var(--right-margin);
     color:#000000;
-    font-size: 20px;
+    font-size: var(--description-text-font-size);
     font-weight: 700;
     width: 519px;
 }
@@ -153,7 +154,7 @@ body {
 
 .formSection{
     background-color: var(--theme-bg-color-contrast);
-    height:40%;
+    height:50%;
 
 }
 
@@ -178,20 +179,26 @@ body {
     height:var(--input-box-height);
 }
 
+.inputItem #checkbox1, .inputItem #checkbox2  {
+    margin-top: 25px;
+    width:20px;
+    height: 20px;
+}
+
 .inputRow:last-child{
     margin-bottom:20px;
 }
 
-input[type="text"],input[type="email"]{
+input[type="text"],input[type="email"],input[type="password"]{
    width: calc(var(--input-box-width) - 2px)
 }
 
-input:invalid{
-    border: 2px solid red;
-}
+/* input:invalid{
+    border: 2px solid rgb(51, 255, 0);
+} */
 
-input:invalid:focus{
-    background-image: linear-gradient(pink,lightgreen);
+input:focus{
+    background-color:#ebe3e3;
 }
 
 
@@ -200,7 +207,7 @@ input:invalid:focus{
     width: 100%;
     padding: 0;
   
-    font-size: 80%;
+    font-size: 100%;
     color: white;
     background-color: #900;
     border-radius: 0 0 5px 5px;
@@ -218,16 +225,20 @@ input:invalid:focus{
     opacity: 1;
   }
 
-  .error.inactive {
-    opacity:0;
+  .error.inactive{
+    opacity: 0;
   }
 
-
+  .correct {
+    border: 2px solid rgb(62, 180, 62);
+  }
 
 
 .createAccountSection{
     background-color:var(--theme-bg-color);
-    height:30%;
+    height:20%;
+    font-size: var(--description-text-font-size);
+    padding-top: calc(0.5 * var(--account-section-top-bottom-margin) );
 }
 
 .submit{
@@ -241,7 +252,6 @@ input:invalid:focus{
 }
 
 .login-text{
-    margin-top:var(--account-section-top-bottom-margin);
     margin-left:var(--left-margin);
 
 }
